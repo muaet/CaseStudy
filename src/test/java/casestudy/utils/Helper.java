@@ -1,5 +1,9 @@
 package casestudy.utils;
-
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Date;
+import java.util.Properties;
 import org.openqa.selenium.By;
 
 public class Helper {
@@ -20,5 +24,6 @@ public class Helper {
     public static void maximizeWindow(){
         Driver.get().manage().window().maximize();
     }
+
 
 }
