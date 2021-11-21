@@ -19,10 +19,14 @@ Feature: casestudy tests
     When go to Sign In page
     Then click sign in with google
     And switch to other window
-    And choose use another account
     Then enter gmail
-    Then click next button
+    Then click gmail next button
     And enter gmail password
-    Then click next button
-    Then switch to other window
+    Then click gmail next button
+    Then switch to main window
     Then verify sucessful login
+    Then open new tab
+    And switch to other window
+    Then go to "https://www.bestbuy.com"
+    Then verify sucessful login
+

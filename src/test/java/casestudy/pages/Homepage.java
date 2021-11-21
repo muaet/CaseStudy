@@ -58,7 +58,7 @@ public class Homepage {
     }
     public void verifyLogin(){
         loggedAcoountButton.click();
-        Assert.assertNotNull(Driver.get().findElement(By.id("logout-button12")));
+        Assert.assertNotNull(Driver.get().findElement(By.id("logout-button")));
 
     }
 
