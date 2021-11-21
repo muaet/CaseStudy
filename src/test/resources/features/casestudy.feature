@@ -30,3 +30,13 @@ Feature: casestudy tests
     Then go to "https://www.bestbuy.com"
     Then verify sucessful login
 
+  Scenario: Task-4
+    When go to Menu
+    Then click to "Audio"
+    And click to "Headphones"
+    And click to "Wireless Headphones"
+    Then search by brand "Philips"
+    And choose item number 2
+    Then click save button
+    And Go to saved items
+    Then Verify list is not empty

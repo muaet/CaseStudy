@@ -1,10 +1,7 @@
 package casestudy.step_def;
-import casestudy.pages.GmailPage;
-import casestudy.pages.SearchResultPage;
+import casestudy.pages.*;
 import casestudy.utils.Driver;
 import casestudy.utils.Helper;
-import casestudy.pages.Homepage;
-import casestudy.pages.LogInPage;
 import casestudy.utils.ConfigReader;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -13,6 +10,7 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.devtools.v85.domstorage.model.Item;
 
 import java.io.IOException;
 import java.util.*;
@@ -23,7 +21,7 @@ public class MyStepdefs {
         SearchResultPage searchResultPage=new SearchResultPage();
         LogInPage logInPage=new LogInPage();
         GmailPage gmailPage=new GmailPage();
-
+        ItemPage itemPage=new ItemPage();
         @Given("homepage is open")
         public void homepageIsOpen() {
             homepage.chooseUS();
@@ -123,4 +121,47 @@ public class MyStepdefs {
         public void goTo(String arg0) {
                 Driver.get().get(arg0);
         }
+
+        @When("go to Menu")
+        public void goToMenu() {
+                homepage.clickOnMenu();
+        }
+
+        @Then("click to {string}")
+        public void clickTo(String arg0) {
+                homepage.DropDownElement(arg0);
+        }
+
+
+        @Then("search by brand {string}")
+        public void searchByBrand(String arg0) {
+                itemPage.searchByBrand(arg0);
+                Helper.waitFor(5);
+        }
+
+        @And("choose item number 2")
+        public void chooseItemNumber() {
+                itemPage.chooseByOrder();
+                Helper.waitFor(3);
+        }
+
+        @Then("click save button")
+        public void clickSaveButton() {
+                itemPage.saveItem();
+                Helper.waitFor(5);
+        }
+
+        @And("Go to saved items")
+        public void goToSavedItems() {
+                itemPage.openSavedList();
+                Helper.waitFor(3);
+        }
+
+        @Then("Verify list is not empty")
+        public void verifyListIsNotEmpty() {
+                itemPage.verifyItemAdded();
+
+        }
+
+
 }

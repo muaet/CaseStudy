@@ -34,6 +34,19 @@ public class Homepage {
     @FindBy(css=".plButton-label.v-ellipsis")
     public WebElement loggedAcoountButton;
 
+    @FindBy(css=".c-button-unstyled.hamburger-menu-button")
+    public WebElement menuButton;
+
+    @FindBy(xpath = "//*[@class='c-button-unstyled hamburger-menu-flyout-list-item ']//*[text()='Audio']")
+    public WebElement Audio;
+
+    @FindBy(xpath = "//*[@class='c-button-unstyled hamburger-menu-flyout-list-item ']//*[text()='Headphones']")
+    public WebElement Headphones;
+
+    @FindBy(xpath = "//*[@class='c-button-unstyled hamburger-menu-flyout-list-item '][text()='Wireless Headphones']")
+    public WebElement WirelessHeadphones;
+
+
     public void chooseUS(){
         country.click();
     }
@@ -60,6 +73,15 @@ public class Homepage {
         loggedAcoountButton.click();
         Assert.assertNotNull(Driver.get().findElement(By.id("logout-button")));
 
+    }
+
+    public void clickOnMenu(){
+        menuButton.click();
+    }
+
+    public void DropDownElement(String arg0){
+        String arg1= "//*[contains(@class,'hamburger-menu-flyout-list-item ') and contains(text(),'"+arg0+"')]";
+        Driver.get().findElement(By.xpath(arg1)).click();
     }
 
 }
